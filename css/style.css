@@ -1,3 +1,4 @@
+/*navbar*/
 .fa-shopping-bag {
     font-size: 2rem;
 }
@@ -24,6 +25,26 @@
     color: #ffffff;
 }
 
+/*masthead*/
+header.masthead {
+    position: relative;
+    overflow: hidden;
+    padding-top: 11.5rem;
+    padding-bottom: 7rem;
+    background: #EDEDED;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    z-index: 1;
+    font-size: 4rem;
+}
+
+/*card*/
+
+
+
+/*formulaire panier*/
 .form-control small {
     color: red;
     position: absolute;
