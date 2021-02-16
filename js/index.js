@@ -1,4 +1,6 @@
-fetch("http://localhost:3000/api/teddies")
+
+///////////////////////Récupération des données de l'API/////////////////////////////////
+fetch("http://localhost:3000/api/teddies")  /* peut être remplacé par "https://oc-orinoco-p5.herokuapp.com/api/teddies"*/
 	.then(response => {
 		console.log("ok backend data retrieved")
 		if (response.ok) {
@@ -17,8 +19,9 @@ fetch("http://localhost:3000/api/teddies")
 		console.log(e);
 	});
 
+	///////////////////////CREATION FONCTION//////////////////////////////////
 	function createTeddy(element) {
-
+		////////////////////////éléments des cartes de produits////////////////
 		let productContainer = document.createElement("div");
 		let productCard = document.createElement("div");
 		let productImage = document.createElement("img");
@@ -28,6 +31,7 @@ fetch("http://localhost:3000/api/teddies")
 		let productPrice = document.createElement("p");
 		let productButton = document.createElement("a");
 
+		/////////////////////organisation du container////////////////////////////
 		productContainer.appendChild(productCard);
 		productCard.appendChild(productImage);
 		productCard.appendChild(productText);
@@ -36,6 +40,7 @@ fetch("http://localhost:3000/api/teddies")
 		productText.appendChild(productPrice);
 		productText.appendChild(productButton);
 
+		/////////////////////classe Bootstrap////////////////////////////////////
 		productContainer.setAttribute("class", "col-12 col-lg-4");
 		productCard.setAttribute("class", "card h-100");
 		productImage.setAttribute("class", "card-img-top");
@@ -45,17 +50,20 @@ fetch("http://localhost:3000/api/teddies")
 		productDescription.setAttribute("class", "card-text");
 		productButton.setAttribute("class", "btn btn-warning streched-success");
 
+		////////////////////////constante pour retrouver les éléments//////////////
 		const productList = document.getElementById("product-list");
 		productList.appendChild(productContainer);
 
+		///////////////////////contenu des éléments///////////////////////////
 		productImage.setAttribute("src", element.imageUrl);
 		productTitle.innerHTML = element.name;
 		productDescription.innerHTML = element.description;
 		let price = element.price / 100;
 		productPrice.innerHTML = price + " €";
-		productButton.setAttribute("href", "product.html?id=" + element._id);
-		console.log("product.html?id=" + element._id);
+		productButton.setAttribute("href", "produit.html?id=" + element._id);
+		console.log("produit.html?id=" + element._id);
 
+		//////////////////////////////bouton///////////////////////////////
 		productButton.innerHTML = "Découvrir ";
 		
 }

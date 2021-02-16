@@ -41,8 +41,13 @@ header.masthead {
 }
 
 /*card*/
-
-
+.card-body{
+    background-color: #FBFCFA;
+    box-shadow: 2px 2px 2px 1px darkgray;   
+}
+.card-img-top {
+    box-shadow: 2px 2px 2px 1px darkgray;
+}
 
 /*formulaire panier*/
 .form-control small {
@@ -75,6 +80,18 @@ header.masthead {
 }
 
 
+/*page produit*/
+.product-page-container, .cart-page-container {
+    padding-top: 90px;
+}
+
+.cart-img {
+    max-width: 10vw;
+}
+
+full-with {
+    width: 100%;
+}
 
 
 
