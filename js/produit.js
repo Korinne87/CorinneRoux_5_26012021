@@ -4,34 +4,33 @@ let url = new URL(currentURL);
 let productId = url.searchParams.get("id");
 console.log("id du produit:" + productId);
 
-
 //////////////////////////////Récupération des données/////////////////////////////
 let productList = JSON.parse(localStorage.getItem('currentCart'));
 
 fetch("http://localhost:3000/api/teddies/" + productId)
-	.then(response => {
-		console.log(response);
-		if (response.ok) {
-			return response.json();
-		} else {
-			return Promise.reject(response.status);
-		}
-	})
-	.then(data => {
-		console.log(data);
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject(response.status);
+        }
+    })
+    .then(data => {
+        console.log(data);
 //////////////////////////création des éléments///////////////////////////////////
 		let leftColumn = document.createElement("div");
 		let productImage = document.createElement("img");
-		let rightColumn = document.createElement("div");
+		let rightColumn = document.createElement('div');
 		let productText = document.createElement("div");
 		let productTitle = document.createElement("h1");
 		let productDescription = document.createElement("p");
 		let productPrice = document.createElement("p");
 		let productConfiguration = document.createElement("select");
-		let productaddedButton = document.createElement("a");
+		let buyButton = document.createElement("a");
 
 /////////////////////////constante pour retrouver les éléments/////////////////////
-		const productContainer = document.getElementById("product-container");
+		const productContainer = document.getElementById("product-container");	
 
 //////////////////////////organisation du container/////////////////////////////////
 		productContainer.appendChild(leftColumn);
@@ -40,7 +39,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 		productText.appendChild(productDescription);
 		productText.appendChild(productPrice);
 		productText.appendChild(productConfiguration);
-		productText.appendChild(productaddedButton);
+		productText.appendChild(buyButton);
 		rightColumn.appendChild(productText);
 		leftColumn.appendChild(productImage);
 
@@ -48,21 +47,20 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 //////////////////////////classe Bootstrap///////////////////////////////////////
 		leftColumn.setAttribute("class", "left-column col-6");
 		productImage.setAttribute("alt", "Photo de " + data.name);
-		productImage.setAttribute("class", "img-fluid");
+		productImage.setAttribute("class", "img-fluid")
 		rightColumn.setAttribute("class", "right-column col-6");
 		productConfiguration.setAttribute("class", "form-select mb-4 selectpicker");
-		productConfiguration.setAttribute("aria-label", "Choississez votre couleur");
+		productConfiguration.setAttribute("aria-label", "Choisissez votre couleur");
 		productConfiguration.setAttribute("id", "color");
-		productaddedButton.setAttribute("class", " btn btn-warning add-to-cart");
-		productaddedButton.setAttribute("id", "productaddedButton");
-
+		buyButton.setAttribute("class", " btn btn-warning add-to-cart");
+		buyButton.setAttribute("id", "buy-button");
 ///////////////////////////contenu des éléments/////////////////////////////////
 		productImage.setAttribute("src", data.imageUrl);
 		productTitle.innerHTML = data.name;
 		productDescription.innerHTML = data.description;
 		let price = data.price / 100;
-		productPrice.innerHTML = price + "€";
-		productaddedButton.innerHTML = "Ajouter au panier";
+		productPrice.innerHTML = price + " €";
+		buyButton.innerHTML = "Ajouter au panier";
 
 //////////////////////////Contenu du formulaire envoyé/////////////////////////////////
 //////////////////////////Récupération options du backend//////////////////////////////
@@ -75,7 +73,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 		}	
 
 ////////////////////////////nom page////////////////////////////////////////////
-		let pageTitle = document.getElementById("pageTitle");
+		let pageTitle = document.getElementById("page-title");
 		pageTitle.innerHTML = "Teddy " + data.name;
 
 ////////////////////////////choisir une option couleur////////////////////////////////
@@ -86,7 +84,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 		});	
 
 /////////////////////////Enregistrement des produits dans le panier/////////////////////
-
+	
 		var currentCart = (function () {
 			cart = [];
 
@@ -94,11 +92,12 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 				this.id = id;
 				this.color = color;
 				this.price=price;
-				this.count = count;	
+				this.count = count;
 			}
 			function savecart() {
 				localStorage.setItem('currentCart', JSON.stringify(cart));
 			}
+
 			function loadcart() {
 				cart = JSON.parse(localStorage.getItem('currentCart'));
 			}
@@ -110,7 +109,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 
 			obj.addProductToCart = function (id, color, price,count) {
 				for (var item in cart) {
-					if (card[item].id === id && cart[item].color === color) {
+					if (cart[item].id === id && cart[item].color === color) {
 						cart[item].count++;
 						savecart();
 						return;
@@ -138,35 +137,15 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 
 			return obj;
 		})();
-		
-		document.getElementById('productaddedButton').addEventListener('click', async function (event) {
+		document.getElementById('buy-button').addEventListener('click', async function (event) {
 			event.preventDefault();
 			console.log('Listening to event');
 			var id = productId;
 			var color = e.options[e.selectedIndex].text;
 			var price= data.price/100;
-			currentCart.addProductToCard(id, color, price,1);
+			currentCart.addProductToCart(id, color, price,1);
 			updateCount();
 		})
 
-	});	
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
-
+		});
 

@@ -67,3 +67,9 @@ fetch("http://localhost:3000/api/teddies")  /* peut être remplacé par "https:/
 		productButton.innerHTML = "Découvrir ";
 		
 }
+
+if(JSON.parse(localStorage.getItem('counter')) !== null) {
+    document.querySelector('.count').innerHTML = JSON.parse(localStorage.getItem('counter'));
+}
+
+
