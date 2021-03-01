@@ -7,7 +7,7 @@ console.log("id du produit:" + productId);
 //////////////////////////////Récupération des données/////////////////////////////
 let productList = JSON.parse(localStorage.getItem('currentCart'));
 
-fetch("http://localhost:3000/api/teddies/" + productId)
+fetch("https://oc-orinoco-p5.herokuapp.com/api/teddies/" + productId)
     .then(response => {
         console.log(response);
         if (response.ok) {

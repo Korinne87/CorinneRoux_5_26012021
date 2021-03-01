@@ -1,6 +1,6 @@
 
 ///////////////////////Récupération des données de l'API/////////////////////////////////
-fetch("http://localhost:3000/api/teddies")  /* peut être remplacé par "https://oc-orinoco-p5.herokuapp.com/api/teddies"*/
+fetch("https://oc-orinoco-p5.herokuapp.com/api/teddies")  /* peut être remplacé par "https://oc-orinoco-p5.herokuapp.com/api/teddies"*/
 	.then(response => {
 		console.log("ok backend data retrieved")
 		if (response.ok) {

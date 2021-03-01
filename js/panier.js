@@ -78,7 +78,7 @@ function cartPageDisplay() {
             })
         };
 
-        let url = "http://localhost:3000/api/teddies/" + product.id;
+        let url = "https://oc-orinoco-p5.herokuapp.com/api/teddies/" + product.id;
         console.log(url);
         getBackendData(url)
             .then(response => {
@@ -161,7 +161,7 @@ form.addEventListener('submit', e => {
 
 // Storing of order data for confirmation page and redirection
 function postOrder(data) {
-    fetch("http://localhost:3000/api/teddies/order", {
+    fetch("https://oc-orinoco-p5.herokuapp.com/api/teddies/order", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
