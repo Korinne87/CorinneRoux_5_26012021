@@ -1,4 +1,4 @@
-////////////////////////comptabilisation nombre produits dans l barre de navigation///////////////////////////
+////////////////////////comptabilisation nombre produits dans la barre de navigation///////////////////////////
 let cart = JSON.parse(localStorage.getItem('currentCart'));
 
 let countPlaceholder = document.getElementById('product-count');

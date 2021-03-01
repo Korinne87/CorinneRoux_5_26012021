@@ -55,7 +55,7 @@ header.masthead {
   }
   
   .form-control.error input {
-    border-color: #ffc107;
+    border-color: orange;
   }
   
 
@@ -98,7 +98,11 @@ header.masthead {
   .form-control.error {
     justify-content: center;
   }
-
+/*panier*/
+.delete, .less, .plus {
+    cursor: pointer;
+    color: black;
+}
 
 /*page produit*/
 .product-page-container, .cart-page-container {
@@ -116,11 +120,14 @@ full-with {
 /*page confirmation*/
 
 #hero {
-    background-color: darkcyan;
+    background-color: #EDEDED;
     top: 50px;
+    height: 500px;
 }
 
-
+#confirmation-link a {
+    color: black;
+}
 
 
 
